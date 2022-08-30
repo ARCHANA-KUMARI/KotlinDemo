@@ -5,4 +5,8 @@ package com.example.kotlindemo.oops.Inheritance
         circle.draw()
        var rectangle = Rectangle()
        rectangle.draw()
+
+       // Overriding properties demo
+       var overridingPropertiesChild = OverridingPropertiesChild();
+       print("overriding val in child" + overridingPropertiesChild.vertexCount)
     }
