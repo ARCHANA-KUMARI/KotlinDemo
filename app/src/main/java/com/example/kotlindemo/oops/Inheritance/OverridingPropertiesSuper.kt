@@ -6,4 +6,5 @@ package com.example.kotlindemo.oops.Inheritance
  */
 open class OverridingPropertiesSuper {
     open val vertexCount: Int = 0
+    open val handCount : Int = 0
 }

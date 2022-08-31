@@ -9,4 +9,5 @@ package com.example.kotlindemo.oops.Inheritance
        // Overriding properties demo
        var overridingPropertiesChild = OverridingPropertiesChild();
        print("overriding val in child" + overridingPropertiesChild.vertexCount)
+       print("overriding val in child using ctor" + overridingPropertiesChild.handCount)
     }
