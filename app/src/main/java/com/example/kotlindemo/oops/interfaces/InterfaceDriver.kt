@@ -10,10 +10,17 @@ fun main(array: Array<String>){
     interfaceDemoImpl.methodAbstract()
     interfaceDemoImpl.methodWithBody()*/
 
-    // Properties of Interface
+ /*   // Properties of Interface
     val propertiesImpl = InterfacePropertiesImpl()
     println(propertiesImpl.property)
     println(propertiesImpl.propertyWithImpl)
     propertiesImpl.methodWithBody()
-   // println(propertiesImpl.methodWithBody())
+   // println(propertiesImpl.methodWithBody())*/
+
+    // Interface Inheritance Demo
+    val employeeData = EmployeeData("Archana ", "Kumari", 1);
+    println(employeeData.toString())
+
+
+
 }
