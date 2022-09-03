@@ -17,9 +17,15 @@ fun main(array: Array<String>){
     propertiesImpl.methodWithBody()
    // println(propertiesImpl.methodWithBody())*/
 
-    // Interface Inheritance Demo
+  /*  // Interface Inheritance Demo
     val employeeData = EmployeeData("Archana ", "Kumari", 1);
     println(employeeData.toString())
+*/
+    // Overriding conflict demo
+    var d = D()
+    d.bar()
+    d.foo()
+
 
 
 
