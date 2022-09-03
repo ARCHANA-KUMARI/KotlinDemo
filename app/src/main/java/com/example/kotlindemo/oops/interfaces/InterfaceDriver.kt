@@ -5,7 +5,15 @@ package com.example.kotlindemo.oops.interfaces
  * @Date: 03-09-2022
  */
 fun main(array: Array<String>){
+   /* // Basic of interface and its implementor
     var interfaceDemoImpl = InterfaceDemoImpl()
     interfaceDemoImpl.methodAbstract()
-    interfaceDemoImpl.methodWithBody()
+    interfaceDemoImpl.methodWithBody()*/
+
+    // Properties of Interface
+    val propertiesImpl = InterfacePropertiesImpl()
+    println(propertiesImpl.property)
+    println(propertiesImpl.propertyWithImpl)
+    propertiesImpl.methodWithBody()
+   // println(propertiesImpl.methodWithBody())
 }
