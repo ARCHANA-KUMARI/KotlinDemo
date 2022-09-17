@@ -32,4 +32,5 @@ fun main(args : Array<String>){
     println("DataDemoMis object" + dataDemoMis)
     println("DataDemoMis toString" + dataDemoMis.toString())
     println("DataDemoMis hashCode" + dataDemoMis.hashCode())*/
+
 }
