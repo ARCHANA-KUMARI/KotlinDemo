@@ -1,5 +1,6 @@
 package com.example.kotlindemo.oops
 
+import com.example.kotlindemo.oops.ConstructorDemo.NoConstructorDemo
 import com.example.kotlindemo.oops.ConstructorDemo.SecondaryCons
 import com.example.kotlindemo.oops.ConstructorDemo.SecondaryConsWithOutPrimaryCons
 
@@ -12,6 +13,11 @@ fun main(args: Array<String>){
  /*   // Secondary Constructor Demo
     val student = SecondaryCons("Peter", 1)*/
 
-    // Secondary Constructor without Primary Constructor
-    var secondaryConsWithPrimaryCons = SecondaryConsWithOutPrimaryCons(10);
+ /*   // Secondary Constructor without Primary Constructor
+    var secondaryConsWithPrimaryCons = SecondaryConsWithOutPrimaryCons(10);*/
+
+ /*    If non-abstract class doesn`t have primary and secondary ctor then it will have to generate
+    Primary constructor.*/
+
+     NoConstructorDemo()
 }
