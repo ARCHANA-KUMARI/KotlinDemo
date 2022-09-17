@@ -1,4 +1,4 @@
-package com.example.kotlindemo.oops
+package com.example.kotlindemo.oops.ConstructorDemo
 
 class SecondaryCons(var name: String) {
     init {

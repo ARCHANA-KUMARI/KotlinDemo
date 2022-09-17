@@ -1,4 +1,4 @@
-package com.example.kotlindemo.oops
+package com.example.kotlindemo.oops.ConstructorDemo
 
 class PersonPrimaryCons constructor(name: String = "Wil", age: Int = 0, salary: Int = 0){
     init {

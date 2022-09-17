@@ -1,4 +1,7 @@
 package com.example.kotlindemo.oops
+
+import com.example.kotlindemo.oops.ConstructorDemo.SecondaryCons
+
 fun main(args: Array<String>){
    /* // Primary Constructor Demo
     val person1 = PersonPrimaryCons("Annonymous" , 20, 5000)
