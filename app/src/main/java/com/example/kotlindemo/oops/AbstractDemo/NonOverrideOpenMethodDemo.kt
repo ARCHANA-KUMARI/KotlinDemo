@@ -1,4 +1,4 @@
-package com.example.kotlindemo.AbstractDemo
+package com.example.kotlindemo.oops.AbstractDemo
 
 /**
  * Abstract class can override with non-override abstract method with abstract one.

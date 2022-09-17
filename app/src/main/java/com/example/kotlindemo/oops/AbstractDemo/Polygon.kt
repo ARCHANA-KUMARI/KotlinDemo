@@ -1,4 +1,4 @@
-package com.example.kotlindemo.AbstractDemo
+package com.example.kotlindemo.oops.AbstractDemo
 
 /**
  *  This class demonstrate the Abstract class demo.
