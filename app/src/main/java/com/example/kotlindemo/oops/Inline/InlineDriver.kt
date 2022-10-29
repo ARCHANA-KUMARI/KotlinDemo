@@ -16,11 +16,21 @@ fun main() {
 
     // Inline Representation demo
 
-    val inn = InlineRepresentation(42)
+   /* val inn = InlineRepresentation(42)
     asGeneric(inn)
     asInline(inn)
     asInterface(inn)
     asNullable(inn)
-    println(id(inn))
+    println(id(inn))*/
 
+    // Alias Vs Inline Demo
+
+    val nAlias : nameTypeAlias = ""
+    val nInline : InlineVsAliasDemo = InlineVsAliasDemo("")
+    val nString : String = ""
+
+    asseptString(nAlias)
+    // asseptString(nInline) /* Not Okay required String found Alias */
+    asseptNameTypeAlias(nAlias)
+   // asseptNameInlineClass(nString) // Not Okay required Inline found String
 }
