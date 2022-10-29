@@ -10,8 +10,17 @@ fun main() {
     name.greet()
     println(name.length)*/
 
-    // Inheritance with Inline class
+   /* // Inheritance with Inline class
     var name = InlineInheritance("Kotlin Demo")
-    println(name.print())
+    println(name.print())*/
+
+    // Inline Representation demo
+
+    val inn = InlineRepresentation(42)
+    asGeneric(inn)
+    asInline(inn)
+    asInterface(inn)
+    asNullable(inn)
+    println(id(inn))
 
 }
