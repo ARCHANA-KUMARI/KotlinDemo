@@ -17,5 +17,4 @@ fun main(args : Array<String>){
     // Anonymous Enum class
     println("Walking overidden method:" + AnonynousEnum.WALKING.signal() + "\n Name :" + AnonynousEnum.WALKING.signal().name + "\n Order " + AnonynousEnum.WALKING.signal().ordinal)
     println("Talking overidden method:" + AnonynousEnum.TALKING.signal() + "\n Name :" + AnonynousEnum.TALKING.signal().name + "\n Order " + AnonynousEnum.TALKING.signal().ordinal)
-
 }
