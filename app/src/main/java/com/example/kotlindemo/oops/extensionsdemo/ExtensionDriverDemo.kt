@@ -15,9 +15,18 @@ fun main(args: Array<String>) {
     list.swap(0, 2)
     println("list after swapping:" + list)*/
 
-   // Extensions funtion from Userdefined class. Extensino funtion doesn`t follow inheritance concept
+ /*  // Extensions funtion from Userdefined class. Extensino funtion doesn`t follow inheritance concept
     printClassName(Shape())
-    printClassName(Rectangle())
+    printClassName(Rectangle())*/
+
+    // In case class have same function name, params,receiver type. Member funtion method will be called.
+
+    var extensionsFunOverloading = ExtensionsFunOverloading()
+    extensionsFunOverloading.printFunctionType()
+}
+
+fun ExtensionsFunOverloading.printFunctionType() {
+    println("Function from extensions")
 }
 
 fun Shape.getName() = "Shape"
