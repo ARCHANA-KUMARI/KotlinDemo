@@ -23,8 +23,13 @@ fun main(args: Array<String>) {
 
     var extensionsFunOverloading = ExtensionsFunOverloading()
     extensionsFunOverloading.printFunctionType()
+    // Extension method overloading concept
+    extensionsFunOverloading.printFunctionType(10)
 }
 
+fun ExtensionsFunOverloading.printFunctionType(i : Int){
+    println("Function from extensions"+ i)
+}
 fun ExtensionsFunOverloading.printFunctionType() {
     println("Function from extensions")
 }
