@@ -10,9 +10,22 @@ package com.example.kotlindemo.oops.extensionsdemo
  */
 
 fun main(args: Array<String>) {
+/*    // Extension from Predefined class
     val list = mutableListOf(1, 2, 3)
     list.swap(0, 2)
-    println("list after swapping:" + list)
+    println("list after swapping:" + list)*/
+
+   // Extensions funtion from Userdefined class. Extensino funtion doesn`t follow inheritance concept
+    printClassName(Shape())
+    printClassName(Rectangle())
+}
+
+fun Shape.getName() = "Shape"
+fun Rectangle.getName() = "Rectangle"
+
+// Extension from Userdefined class
+fun printClassName(shape : Shape){
+    println("Class Name:" + shape.getName())
 }
 
 fun <T> MutableList<T>.swap(index1: Int, index2: Int) {
