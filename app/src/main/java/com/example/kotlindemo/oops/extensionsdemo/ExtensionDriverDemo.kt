@@ -3,6 +3,20 @@ package com.example.kotlindemo.oops.extensionsdemo
 import com.example.kotlindemo.functionDemo.sum
 import com.example.kotlindemo.oops.objExpAndDecDemo.CompanianObjDemo
 
+fun List<String>.getLongestString(list: MutableList<String>): String {
+    var maxLength = list[0].length
+    var index: Int
+    index = 0;
+
+    for (item: String in list) {
+        if (maxLength < item.length) {
+            maxLength = item.length
+            index = list.indexOf(item)
+        }
+    }
+    return list[index];
+}
+
 /**
  *  This class demonstrate the extensions function poc for all usecase
  *  MutableList doesn`t have swap method so swap functionality created using Extensions function
@@ -29,8 +43,18 @@ fun main(args: Array<String>) {
     // Extension method overloading concept
     extensionsFunOverloading.printFunctionType(10)*/
 
-    // Extensions funtion demo for companion object
-    println("Companion sum:" + sum(10, 15))
+/*    // Extensions function demo for companion object
+    println("Companion sum:" + sum(10, 15))*/
+
+    // Scope of extension function test
+   var  list = mutableListOf(
+        "Alisha",
+        "Peter Floric",
+        "Diana",
+        "Willgarner",
+        "Cerry Algos"
+    )
+    println("Longest Length string is:" + list.getLongestString(list))
 }
 
 fun CompanianObjDemo.Companion.sum(num: Int, num1: Int): Int {
