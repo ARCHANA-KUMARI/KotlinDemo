@@ -46,7 +46,7 @@ fun main(args: Array<String>) {
 /*    // Extensions function demo for companion object
     println("Companion sum:" + sum(10, 15))*/
 
-    // Scope of extension function test
+  /*  // Scope of extension function test
    var  list = mutableListOf(
         "Alisha",
         "Peter Floric",
@@ -54,7 +54,10 @@ fun main(args: Array<String>) {
         "Willgarner",
         "Cerry Algos"
     )
-    println("Longest Length string is:" + list.getLongestString(list))
+    println("Longest Length string is:" + list.getLongestString(list))*/
+
+    // Declaring extension as a member
+    Connection(Host("kotl.in"), 443).connect()
 }
 
 fun CompanianObjDemo.Companion.sum(num: Int, num1: Int): Int {
