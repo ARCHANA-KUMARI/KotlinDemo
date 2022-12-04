@@ -1,7 +1,10 @@
 package com.example.kotlindemo.oops.extensionsdemo
 
+import com.example.kotlindemo.functionDemo.sum
+import com.example.kotlindemo.oops.objExpAndDecDemo.CompanianObjDemo
+
 /**
- *  This class demonstrate the extensions function poc
+ *  This class demonstrate the extensions function poc for all usecase
  *  MutableList doesn`t have swap method so swap functionality created using Extensions function
  *  this: represnts MutableList class.
  *
@@ -19,12 +22,19 @@ fun main(args: Array<String>) {
     printClassName(Shape())
     printClassName(Rectangle())*/
 
-    // In case class have same function name, params,receiver type. Member funtion method will be called.
+   /* // In case class have same function name, params,receiver type. Member funtion method will be called.
 
     var extensionsFunOverloading = ExtensionsFunOverloading()
     extensionsFunOverloading.printFunctionType()
     // Extension method overloading concept
-    extensionsFunOverloading.printFunctionType(10)
+    extensionsFunOverloading.printFunctionType(10)*/
+
+    // Extensions funtion demo for companion object
+    println("Companion sum:" + sum(10, 15))
+}
+
+fun CompanianObjDemo.Companion.sum(num: Int, num1: Int): Int {
+    return num + num1
 }
 
 fun ExtensionsFunOverloading.printFunctionType(i : Int){
