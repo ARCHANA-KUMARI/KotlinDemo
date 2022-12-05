@@ -56,8 +56,15 @@ fun main(args: Array<String>) {
     )
     println("Longest Length string is:" + list.getLongestString(list))*/
 
-    // Declaring extension as a member
-    Connection(Host("kotl.in"), 443).connect()
+  /*  // Declaring extension as a member
+    Connection(Host("kotl.in"), 443).connect()*/
+
+    // Open extension funtion
+    //BaseCaller.call(Base()) //todo android studio is not resolving it.
+    DerivedCaller().call(Base())
+    DerivedCaller().call(Derive())
+
+
 }
 
 fun CompanianObjDemo.Companion.sum(num: Int, num1: Int): Int {
