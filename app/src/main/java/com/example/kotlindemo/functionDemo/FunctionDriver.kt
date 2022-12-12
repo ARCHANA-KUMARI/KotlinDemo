@@ -24,9 +24,13 @@ fun main(args: Array<String>) {
     ChildFunWithDefArgs().read(6, 16)
     ChildFunWithDefArgs().read(7, 14, "Grace Floric")*/
 
-    // Named argument function call
+  /*  // Named argument function call
     var funNamedArgs = FunctionNamedArgs()
     funNamedArgs.reformat("Default string")
     println("Named Argument Demo")
-    funNamedArgs.reformat("string test", normalizeCase = false, divideByCamelHumps = false)
+    funNamedArgs.reformat("string test", normalizeCase = false, divideByCamelHumps = false)*/
+
+    // vararg param type
+    var funArgs = FunctionVarArgs()
+    funArgs.names("Alica", "Florick")
 }
