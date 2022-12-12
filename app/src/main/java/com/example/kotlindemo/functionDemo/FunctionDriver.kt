@@ -19,9 +19,14 @@ fun main(args: Array<String>) {
     // Passing all params explicitly
     functionWithAllArg.read(3, 50, "Peter Floric");*/
 
-    // Method overriden with default args.
+  /*  // Method overriden with default args.
     ChildFunWithDefArgs().read(5)
     ChildFunWithDefArgs().read(6, 16)
-    ChildFunWithDefArgs().read(7, 14, "Grace Floric")
-    
+    ChildFunWithDefArgs().read(7, 14, "Grace Floric")*/
+
+    // Named argument function call
+    var funNamedArgs = FunctionNamedArgs()
+    funNamedArgs.reformat("Default string")
+    println("Named Argument Demo")
+    funNamedArgs.reformat("string test", normalizeCase = false, divideByCamelHumps = false)
 }
