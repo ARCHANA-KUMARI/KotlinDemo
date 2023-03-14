@@ -27,12 +27,12 @@ fun List<String>.getLongestString(list: MutableList<String>): String {
  */
 
 fun main(args: Array<String>) {
-/*    // Extension from Predefined class
+   /* // Extension from Predefined class
     val list = mutableListOf(1, 2, 3)
     list.swap(0, 2)
     println("list after swapping:" + list)*/
 
- /*  // Extensions funtion from Userdefined class. Extensino funtion doesn`t follow inheritance concept
+  /* // Extensions function from Userdefined class. Extensino funtion doesn`t follow inheritance concept
     printClassName(Shape())
     printClassName(Rectangle())*/
 
@@ -46,7 +46,7 @@ fun main(args: Array<String>) {
 /*    // Extensions function demo for companion object
     println("Companion sum:" + sum(10, 15))*/
 
-  /*  // Scope of extension function test
+/*    // Scope of extension function test
    var  list = mutableListOf(
         "Alisha",
         "Peter Floric",
@@ -56,13 +56,13 @@ fun main(args: Array<String>) {
     )
     println("Longest Length string is:" + list.getLongestString(list))*/
 
-  /*  // Declaring extension as a member
-    Connection(Host("kotl.in"), 443).connect()*/
+   // Declaring extension as a member
+    Connection(Host("kotl.in"), 443).connect()
 
-    // Open extension funtion
+  /*  // Open extension funtion
     //BaseCaller.call(Base()) //todo android studio is not resolving it.
     DerivedCaller().call(Base())
-    DerivedCaller().call(Derive())
+    DerivedCaller().call(Derive())*/
 
 
 }

@@ -1,4 +1,5 @@
 
+
 package com.example.kotlindemo.arrayDemo
 
 fun main(args:Array<String>){
@@ -26,6 +27,4 @@ fun main(args:Array<String>){
     for(i in 0..arrayUsingCtor.size -1){
         println(arrayUsingCtor.get(i))
     }
-
-
 }

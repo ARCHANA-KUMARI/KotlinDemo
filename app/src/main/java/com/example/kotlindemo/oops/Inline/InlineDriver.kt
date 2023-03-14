@@ -5,10 +5,10 @@ package com.example.kotlindemo.oops.Inline
  * @Date: 29-10-2022
  */
 fun main() {
-    /*// Member
+    // Member
     val name = InlineMemberDemo("Kotlin")
     name.greet()
-    println(name.length)*/
+    println(name.length)
 
    /* // Inheritance with Inline class
     var name = InlineInheritance("Kotlin Demo")
@@ -25,12 +25,12 @@ fun main() {
 
     // Alias Vs Inline Demo
 
-    val nAlias : nameTypeAlias = ""
+/*    val nAlias : nameTypeAlias = ""
     val nInline : InlineVsAliasDemo = InlineVsAliasDemo("")
     val nString : String = ""
 
-    asseptString(nAlias)
+    asseptString(nAlias)*/
     // asseptString(nInline) /* Not Okay required String found Alias */
-    asseptNameTypeAlias(nAlias)
+  //  asseptNameTypeAlias(nAlias)
    // asseptNameInlineClass(nString) // Not Okay required Inline found String
 }
