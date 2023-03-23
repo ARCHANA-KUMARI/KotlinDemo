@@ -4,6 +4,9 @@ package com.example.kotlindemo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.databinding.ViewDataBinding
+import androidx.viewbinding.ViewBindings
+import com.example.kotlindemo.databinding.ActivityMainBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -11,9 +14,12 @@ import kotlinx.coroutines.yield
 
 class MainActivity : AppCompatActivity() {
     private val TAG : String = "MainActivity"
+    private lateinit var mMainBinding : ActivityMainBinding;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        mMainBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(mMainBinding.root)
         CoroutineScope(Dispatchers.Main).launch {
             task1()
         }
