@@ -1,7 +1,7 @@
 package com.example.kotlindemo.oops.delegation
 
 /** This class demonstrate behaviour of delegation over ovveride method.
- * 
+ *
  * @Author: Archana Kumari
  * @Date: 18-03-2023
  */

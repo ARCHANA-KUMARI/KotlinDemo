@@ -4,6 +4,15 @@ package com.example.kotlindemo.coroutine
  * @Author: Archana Kumari
  * @Date: 14-03-2023
  */
-class SuspendDemo {
+fun main() {
+    task1()
+    task2()
+}
 
+fun task1() {
+    print("Hello")
+}
+
+fun task2() {
+    print("World")
 }
