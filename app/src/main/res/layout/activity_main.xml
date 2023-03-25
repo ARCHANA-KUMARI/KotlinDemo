@@ -29,11 +29,22 @@
         android:id="@+id/btn_start_thread"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click to start Thread"
+        android:text="@{String.valueOf(mainActivityViewmodel.counters)}"
         app:layout_constraintTop_toBottomOf="@id/btn_block_ui_thread"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:onClick="@{()->mainActivityViewmodel.onClickOfCounterButton()}"
         />
+
+    <TextView
+        android:id="@+id/txt_counter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@{String.valueOf(mainActivityViewmodel.counters)}"
+        app:layout_constraintTop_toBottomOf="@id/btn_start_thread"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+       />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
