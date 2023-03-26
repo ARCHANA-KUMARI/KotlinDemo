@@ -45,6 +45,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
        />
-
+    <Button
+        android:id="@+id/btn_launch_coroutine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Launch coroutine"
+        app:layout_constraintTop_toBottomOf="@id/txt_counter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="@{()->mainActivityViewmodel.onClickLaunchCoroutine()}"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
