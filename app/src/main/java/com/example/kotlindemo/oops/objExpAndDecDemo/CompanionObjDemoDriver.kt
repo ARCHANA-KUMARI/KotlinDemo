@@ -7,5 +7,8 @@ package com.example.kotlindemo.oops.objExpAndDecDemo
  */
 fun main(args: Array<String>) {
     // Static display method call
-    CompanianObjDemo.display()
+   /* CompanianObjDemo.display()
+    CompanionObjWithoutName.Companion*/
+    ObjectDemo.MyFirstObject.firstObject()
+    ObjectDemo.MySecondObject.secondObject()
 }

@@ -10,10 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBindings
 import com.example.kotlindemo.databinding.ActivityMainBinding
 import com.example.kotlindemo.viewmodel.MainActivityViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.yield
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
     private val TAG : String = "MainActivity"
@@ -39,13 +36,15 @@ class MainActivity : AppCompatActivity() {
 
     suspend fun task1(){
         Log.d(TAG, "task1: starting ")
-        yield()
+        //yield()
+        delay(2000)
         Log.d(TAG, "task1: ending ")
     }
 
     suspend fun task2(){
         Log.d(TAG, "task2: starting ")
-        yield()
+      //  yield()
+        delay(2000)
         Log.d(TAG, "task2: ending ")
     }
 }
