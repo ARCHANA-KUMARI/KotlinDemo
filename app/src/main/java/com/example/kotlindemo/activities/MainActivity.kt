@@ -1,13 +1,10 @@
 
-package com.example.kotlindemo
+package com.example.kotlindemo.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.viewbinding.ViewBindings
 import com.example.kotlindemo.databinding.ActivityMainBinding
 import com.example.kotlindemo.viewmodel.MainActivityViewModel
 import kotlinx.coroutines.*

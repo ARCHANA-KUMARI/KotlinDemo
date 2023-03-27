@@ -1,12 +1,12 @@
 package com.example.kotlindemo.viewmodel
 
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
+import com.example.kotlindemo.activities.HomeActivity
+import kotlinx.coroutines.*
 import kotlin.concurrent.thread
 
 /**
@@ -17,6 +17,7 @@ class MainActivityViewModel : ViewModel() {
     private val TAG = "ArchanaMainViewModel"
     private var counter = MutableLiveData(0)
     val counters: LiveData<Int> = counter
+
     fun getCounter(): Int? {
         return counter.value
     }
@@ -54,5 +55,20 @@ class MainActivityViewModel : ViewModel() {
                 "onClickLaunchCoroutine: Default +  ${Thread.currentThread().name}"
             )
         }
+    }
+
+    fun onClickOfLaunchAppInGlobalScope(){
+        GlobalScope.launch {  
+            while (true){
+                delay(2000)
+                Log.d(TAG, "onClickOfLaunchAppInGlobalScope:  still working")
+            }
+        }
+
+       GlobalScope.launch {
+           delay(2000)
+         //  Intent(this,HomeActivity.)
+       }
+        
     }
 }
