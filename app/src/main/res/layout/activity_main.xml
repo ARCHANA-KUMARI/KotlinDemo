@@ -65,5 +65,24 @@
         app:layout_constraintStart_toStartOf="parent"
         android:onClick="@{()->mainActivityViewmodel.onClickLaunchCoroutine()}"
         />
+    <Button
+        android:id="@+id/btn_run_blocking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Run blocking"
+        app:layout_constraintTop_toBottomOf="@id/btn_global_scope"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="@{()->mainActivityViewmodel.onClickOfRunBlockingButton()}"
+        />
+    <Button
+        android:id="@+id/btn_with_context"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Launch with Context"
+        app:layout_constraintTop_toBottomOf="@id/btn_run_blocking"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:onClick="@{()->mainActivityViewmodel.onClickOfRunBlockingButton()}" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

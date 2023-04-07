@@ -57,6 +57,28 @@ class MainActivityViewModel : ViewModel() {
         }
     }
 
+    fun onClickOfRunBlockingButton() {
+        Log.i(TAG, "onClickOfRunBlockingButton: Before run blocking")
+        runBlocking {
+            // runBlocking only block Ui Thread
+            /*   Log.i(TAG, "onClickOfRunBlockingButton: Start of Run blocking")
+                 delay(2000)
+                 Log.i(TAG, "onClickOfRunBlockingButton: Start of Run blocking")*/
+            launch {
+                Log.i(TAG ,"Current Thread: A" + Thread.currentThread())
+                Log.i(TAG, "Launch A")
+                delay(2000)
+            }
+
+            launch {
+                Log.i(TAG, "Current Thread: B" + Thread.currentThread())
+                Log.i(TAG, "Launch B")
+                delay(2000)
+            }
+        }
+        Log.i(TAG, "onClickOfRunBlockingButton: after run blocking")
+    }
+
     fun onClickOfLaunchAppInGlobalScope(){
         GlobalScope.launch {  
             while (true){
@@ -66,9 +88,19 @@ class MainActivityViewModel : ViewModel() {
         }
 
        GlobalScope.launch {
+
            delay(2000)
          //  Intent(this,HomeActivity.)
        }
-        
+    }
+
+    // Can`t bind suspend function with view binding.
+    suspend fun onClickOfRunWithContext() {
+        Log.i(TAG, "onClickOfRunWithContext: Before")
+        withContext(Dispatchers.IO) {
+            delay(2000)
+            Log.i(TAG, "onClickOfRunWithContext: Inside")
+        }
+        Log.i(TAG, "onClickOfRunWithContext: After")
     }
 }

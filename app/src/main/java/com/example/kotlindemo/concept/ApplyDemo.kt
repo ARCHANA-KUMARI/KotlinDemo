@@ -1,7 +1,5 @@
 package com.example.kotlindemo.concept
 
-import com.example.kotlindemo.oops.datademo.DataDemo
-
 /** This clas demonstrate the behaviour of utility function of kotlin
  *  apply, let, with, run
  * @Author: Archana Kumari
@@ -41,6 +39,7 @@ fun main(args: Array<String>) {
     println("WithReturn:" + withReturn)
 
     var withReturnRun = emp.run {
+
         age = 31
         name = "Singh"
         2// withReturn is last statement of with block/
