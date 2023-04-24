@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         mMainBinding.mainActivityViewmodel = mMainActivityViewModel
         mMainBinding.lifecycleOwner = this
 
-        // Sequential execution demo
+     /*   // Sequential execution demo
         runBlocking<Unit> {
             val time = measureTimeMillis {
                 val one = doSomethingUsefulOne()
@@ -31,6 +31,20 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "The answer is ${one + two}")
             }
             Log.d(TAG,"Completed in $time ms")
+        }*/
+
+        // Run parallelly
+        runBlocking<Unit> {
+            val time = measureTimeMillis {
+                val one = async { doSomethingUsefulOne() }
+                val two = async { doSomethingUsefulTwo() }
+
+                Log.d(TAG, "The answer is one: ${one}")
+                Log.d(TAG, "The answer is two: ${two}")
+                Log.d(TAG, "The answer is one with await: ${one.await()}")
+                Log.d(TAG, "The answer is two with await: ${two.await()}")
+            }
+            Log.d(TAG, "Completed in $time ms")
         }
 
         // Parallel execution demo
