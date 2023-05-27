@@ -25,12 +25,12 @@ fun main(args: Array<String>) {
     }
     println("empReturn" + empReturn)
 
-    /* val empNull: Employee? = null
+    val empNull: Employee? = null
      empNull?.let {
          it.age = 40
          it.name = "Lucca Queen"
      }
-     println("empNull" + empReturn)*/
+     println("empNull" + empNull)
 
     var withReturn = with(emp) {
         age = 30

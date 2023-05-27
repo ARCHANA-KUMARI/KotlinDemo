@@ -85,13 +85,16 @@ class MainActivityViewModel : ViewModel() {
                 delay(2000)
                 Log.d(TAG, "onClickOfLaunchAppInGlobalScope:  still working")
             }
+
         }
 
-       GlobalScope.launch {
+        Log.d(TAG, "After Global Scope Coroutines")
+
+       /*GlobalScope.launch {
 
            delay(2000)
          //  Intent(this,HomeActivity.)
-       }
+       }*/
     }
 
     // Can`t bind suspend function with view binding.
