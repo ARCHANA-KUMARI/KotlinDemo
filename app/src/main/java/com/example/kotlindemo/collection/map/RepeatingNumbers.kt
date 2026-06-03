@@ -14,7 +14,7 @@ class RepeatingNumbers {
                     map.put(arr[i], 1);
                 } else {
                     if (map.get(arr[i])!! <= 2) {
-                        map.put(arr[i], arr.get(arr[i]) + 1);
+                        map.put(arr[i], map.get(arr[i])!! + 1);
                     }
                 }
             }
@@ -27,7 +27,8 @@ fun main(args: Array<String>) {
     val array: IntArray = intArrayOf(3, 1, 4, 4, 5, 2, 6, 1)
     var map: HashMap<Int, Int> = RepeatingNumbers.repeatedNumbers(array, 2)
     val keysValue = map.filterValues { it == 2 }
-    for (key in keysValue) {
+    println(keysValue)
+  /*  for (key in keysValue) {
         println(keysValue)
-    }
+    }*/
 }
