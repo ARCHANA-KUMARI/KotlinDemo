@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG,"Completed in $time ms")
         }*/
 
-        // Run parallelly
+     /*   // Run parallelly
         runBlocking<Unit> {
             val time = measureTimeMillis {
                 val one = async { doSomethingUsefulOne() }
@@ -45,8 +45,8 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "The answer is two with await: ${two.await()}")
             }
             Log.d(TAG, "Completed in $time ms")
-        }
-
+        }*/
+/*
         // Parallel execution demo
         CoroutineScope(Dispatchers.Main).launch {
             task1()
@@ -54,7 +54,9 @@ class MainActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.Main).launch {
             task2()
-        }
+        }*/
+
+        testCoroutineContext();
     }
 
     suspend fun doSomethingUsefulOne(): Int {
@@ -79,6 +81,17 @@ class MainActivity : AppCompatActivity() {
       //  yield()
         delay(2000)
         Log.d(TAG, "task2: ending ")
+    }
+    // Coroutine Dispatcher
+
+    private fun testCoroutineContext() {
+        val parentJob = GlobalScope.launch(Dispatchers.Main) {
+            Log.d(TAG, "parent testCoroutineContext: $coroutineContext")
+            val childJob = GlobalScope.launch/*(*Dispatchers.IO)*/ {
+                Log.d(TAG, "child testCoroutineContext: $coroutineContext")
+            }
+
+        }
     }
 }
 
