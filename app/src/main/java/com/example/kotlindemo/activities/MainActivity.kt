@@ -9,7 +9,10 @@ import com.example.kotlindemo.databinding.ActivityMainBinding
 import com.example.kotlindemo.viewmodel.MainActivityViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
-import kotlin.system.measureTimeMillis
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.flow
+
 
 class MainActivity : AppCompatActivity() {
     private val TAG : String = "ArchanaMainActivity"
@@ -27,6 +30,16 @@ class MainActivity : AppCompatActivity() {
         val channel = Channel<Int>()
         producer(channel)
         consumer(channel)
+
+
+        // Flow Demo
+
+        GlobalScope.launch {
+            val data: Flow<Int> = producerBasedOnFlowApi()
+            data.collect {
+                Log.d(TAG, "data from flow:" + it)
+            }
+        }
 
 
 
@@ -113,6 +126,12 @@ class MainActivity : AppCompatActivity() {
             Log.d(TAG, "consumer: channel.receive() = ${channel.receive()}")
             Log.d(TAG, "consumer: channel.receive() = ${channel.receive()} ")
         }
+    }
+
+    private fun producerBasedOnFlowApi() = flow <Int>{
+        val list = listOf(1,2,3,4,5,6,7,8,9,10)
+        list.forEach { delay(1000)
+        emit(it)}
     }
 }
 
