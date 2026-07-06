@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.kotlindemo.databinding.ActivityMainBinding
 import com.example.kotlindemo.viewmodel.MainActivityViewModel
 import kotlinx.coroutines.*
+import kotlinx.coroutines.channels.Channel
 import kotlin.system.measureTimeMillis
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +23,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(mMainBinding.root)
         mMainBinding.mainActivityViewmodel = mMainActivityViewModel
         mMainBinding.lifecycleOwner = this
+
+        val channel = Channel<Int>()
+        producer(channel)
+        consumer(channel)
+
+
 
      /*   // Sequential execution demo
         runBlocking<Unit> {
@@ -91,6 +98,20 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "child testCoroutineContext: $coroutineContext")
             }
 
+        }
+    }
+
+    fun producer(channel: Channel<Int>) {
+        CoroutineScope(Dispatchers.Main).launch{
+            channel.send(1)
+            channel.send(2)
+        }
+    }
+
+    fun consumer(channel: Channel<Int>) {
+        CoroutineScope(Dispatchers.Main).launch {
+            println("channel.receive() = ${channel.receive()}")
+            println("channel.receive() = ${channel.receive()}")
         }
     }
 }
