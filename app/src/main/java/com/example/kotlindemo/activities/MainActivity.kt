@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun producer(channel: Channel<Int>) {
-        CoroutineScope(Dispatchers.Main).launch{
+        CoroutineScope(Dispatchers.Main).launch {
             channel.send(1)
             channel.send(2)
         }
@@ -110,8 +110,8 @@ class MainActivity : AppCompatActivity() {
 
     fun consumer(channel: Channel<Int>) {
         CoroutineScope(Dispatchers.Main).launch {
-            println("channel.receive() = ${channel.receive()}")
-            println("channel.receive() = ${channel.receive()}")
+            Log.d(TAG, "consumer: channel.receive() = ${channel.receive()}")
+            Log.d(TAG, "consumer: channel.receive() = ${channel.receive()} ")
         }
     }
 }
