@@ -34,14 +34,25 @@ class MainActivity : AppCompatActivity() {
 
         // Flow Demo
 
-        GlobalScope.launch {
+     /*   GlobalScope.launch {
             val data: Flow<Int> = producerBasedOnFlowApi() // Flow is hot if we comment collect then it will be not executed.
-         /*   data.collect {
+         *//*   data.collect {
                 Log.d(TAG, "data from flow:" + it)
-            }*/
+            }*//*
+        }*/
+
+        // Demo to cancel job then Flow will be also cancelled.
+
+        val job = GlobalScope.launch {
+            val data: Flow<Int> = producerBasedOnFlowApi() // Flow is hot if we comment collect then it will be not executed.
+               data.collect {
+                   Log.d(TAG, "data from flow:" + it)
+               }
         }
 
-
+        GlobalScope.launch { delay(5000)
+            job.cancel()
+        }
 
      /*   // Sequential execution demo
         runBlocking<Unit> {
