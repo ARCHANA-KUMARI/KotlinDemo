@@ -28,17 +28,17 @@ class MainActivity : AppCompatActivity() {
         mMainBinding.lifecycleOwner = this
 
         val channel = Channel<Int>()
-        producer(channel)
+        producer(channel) // Channel is hot
         consumer(channel)
 
 
         // Flow Demo
 
         GlobalScope.launch {
-            val data: Flow<Int> = producerBasedOnFlowApi()
-            data.collect {
+            val data: Flow<Int> = producerBasedOnFlowApi() // Flow is hot if we comment collect then it will be not executed.
+         /*   data.collect {
                 Log.d(TAG, "data from flow:" + it)
-            }
+            }*/
         }
 
 
@@ -129,9 +129,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun producerBasedOnFlowApi() = flow <Int>{
+        Log.i(TAG, "producerBasedOnFlowApi: starts")
         val list = listOf(1,2,3,4,5,6,7,8,9,10)
         list.forEach { delay(1000)
         emit(it)}
+        Log.i(TAG, "producerBasedOnFlowApi: end")
     }
 }
 
