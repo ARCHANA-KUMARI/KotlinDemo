@@ -192,8 +192,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun producerBasedOnFlowApi() = flow <Int>{
         Log.i(TAG, "producerBasedOnFlowApi: starts")
-        val list = listOf(1,2,3,4,5,6,7,8,9,10)
-        //val list = emptyList<Int>()
+        //val list = listOf(1,2,3,4,5,6,7,8,9,10)
+        val list = emptyList<Int>() // Demo for onEmpty callback
         list.forEach { delay(1000)
         emit(it)}
         Log.i(TAG, "producerBasedOnFlowApi: end")
