@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         }
 */
         // Multiple consumer
-        GlobalScope.launch {
+     /*   GlobalScope.launch {
             val data: Flow<Int> = producerBasedOnFlowApi() // Flow is hot if we comment collect then it will be not executed.
             data.collect {
                 Log.d(TAG, "data from flow consumer-1 :" + it)
@@ -67,7 +67,25 @@ class MainActivity : AppCompatActivity() {
             data.collect {
                 Log.d(TAG, "data from flow consumer-2 :" + it)
             }
+        }*/
+
+        // Multiple Consumer when one consumer join delayed of 5 seconds then also it will get data from
+        // starting becuase it is code . Take example of netflix or prime video
+        GlobalScope.launch {
+            val data: Flow<Int> = producerBasedOnFlowApi() // Flow is hot if we comment collect then it will be not executed.
+            data.collect {
+                Log.d(TAG, "data from flow consumer-1 :" + it)
+            }
         }
+
+        GlobalScope.launch {
+            val data: Flow<Int> = producerBasedOnFlowApi() // Flow is hot if we comment collect then it will be not executed.
+            delay(5000)
+            data.collect {
+                Log.d(TAG, "data from flow consumer-2 :" + it)
+            }
+        }
+
 
      /*   // Sequential execution demo
         runBlocking<Unit> {
