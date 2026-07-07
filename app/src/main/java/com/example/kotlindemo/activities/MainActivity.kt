@@ -12,6 +12,11 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.onCompletion
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.onEmpty
+import kotlinx.coroutines.flow.onStart
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -71,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
         // Multiple Consumer when one consumer join delayed of 5 seconds then also it will get data from
         // starting becuase it is code . Take example of netflix or prime video
-        GlobalScope.launch {
+     /*   GlobalScope.launch {
             val data: Flow<Int> = producerBasedOnFlowApi() // Flow is hot if we comment collect then it will be not executed.
             data.collect {
                 Log.d(TAG, "data from flow consumer-1 :" + it)
@@ -84,6 +89,19 @@ class MainActivity : AppCompatActivity() {
             data.collect {
                 Log.d(TAG, "data from flow consumer-2 :" + it)
             }
+        }*/
+
+
+        // Flow operator demo:
+        GlobalScope.launch {
+            val data: Flow<Int> =
+                producerBasedOnFlowApi() // Flow is hot if we comment collect then it will be not executed.
+            delay(5000)
+            data.onEmpty { Log.d(TAG, "onEmpty: ") }.onStart { Log.i(TAG, "onStart: ") }
+                .onCompletion { Log.i(TAG, "onCompletion: ") }.onEach { Log.i(TAG, "onEach: $it ") }
+                .collect {
+                    Log.d(TAG, "data from flow consumer :" + it)
+                }
         }
 
 
@@ -175,6 +193,7 @@ class MainActivity : AppCompatActivity() {
     private fun producerBasedOnFlowApi() = flow <Int>{
         Log.i(TAG, "producerBasedOnFlowApi: starts")
         val list = listOf(1,2,3,4,5,6,7,8,9,10)
+        //val list = emptyList<Int>()
         list.forEach { delay(1000)
         emit(it)}
         Log.i(TAG, "producerBasedOnFlowApi: end")
