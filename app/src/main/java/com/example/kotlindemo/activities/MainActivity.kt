@@ -12,6 +12,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onEmpty
@@ -93,7 +94,7 @@ class MainActivity : AppCompatActivity() {
 
 
         // Flow operator demo:
-        GlobalScope.launch {
+       /* GlobalScope.launch {
             val data: Flow<Int> =
                 producerBasedOnFlowApi() // Flow is hot if we comment collect then it will be not executed.
             delay(5000)
@@ -104,7 +105,19 @@ class MainActivity : AppCompatActivity() {
                 .collect {
                     Log.d(TAG, "data from flow consumer :" + it)
                 }
+        }*/
+
+
+        //  Flow Context Preservation(flowOn) + Exception Handling(catch)
+
+        GlobalScope.launch(Dispatchers.Main) {
+
+            producerBasedOnFlowApiOnDiffContext().flowOn(Dispatchers.IO).collect {
+                Log.d(TAG, "data from flow consumer :" + it)
+            }
         }
+
+
 
 
      /*   // Sequential execution demo
@@ -199,6 +212,17 @@ class MainActivity : AppCompatActivity() {
         list.forEach { delay(1000)
         emit(it)}
         Log.i(TAG, "producerBasedOnFlowApi: end")
+    }
+
+    private fun producerBasedOnFlowApiOnDiffContext() = flow<Int> {
+        Log.i(TAG, "producerBasedOnFlowApiOnDiffContext: starts")
+        val list = listOf(1, 2, 3, 4, 5)
+        list.forEach {
+            delay(1000)
+            emit(it)
+        }
+        Log.i(TAG, "producerBasedOnFlowApiOnDiffContext: end")
+
     }
 }
 
