@@ -10,6 +10,7 @@ import com.example.kotlindemo.viewmodel.MainActivityViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -110,13 +111,21 @@ class MainActivity : AppCompatActivity() {
 
         //  Flow Context Preservation(flowOn) + Exception Handling(catch)
 
-        GlobalScope.launch(Dispatchers.Main) {
+     /*   GlobalScope.launch(Dispatchers.Main) {
 
             producerBasedOnFlowApiOnDiffContext().flowOn(Dispatchers.IO).collect {
                 Log.d(TAG, "data from flow consumer :" + it)
             }
-        }
+        }*/
 
+        //MutableSharedFlow demo
+        GlobalScope.launch(Dispatchers.Main) {
+            val result = producerBasedOnSharedSharedFlow()
+            delay(5000)
+            result.collect {
+                Log.d(TAG, "data from flow consumer :" + it)
+            }
+        }
 
 
 
@@ -223,6 +232,21 @@ class MainActivity : AppCompatActivity() {
         }
         Log.i(TAG, "producerBasedOnFlowApiOnDiffContext: end")
 
+    }
+
+    private fun producerBasedOnSharedSharedFlow(): Flow<Int> {
+        Log.i(TAG, "producerBasedOnSharedSharedFlow: starts")
+        val mutableSharedFlow = MutableSharedFlow<Int>()
+        GlobalScope.launch {
+            val list = listOf(1, 2, 3, 4, 5)
+            list.forEach {
+                mutableSharedFlow.emit(it)
+                Log.d(TAG, "producerBasedOnSharedSharedFlow:  emitted value: $it")
+                delay(1000)
+            }
+        }
+        Log.i(TAG, "producerBasedOnSharedSharedFlow: end")
+        return mutableSharedFlow
     }
 }
 
