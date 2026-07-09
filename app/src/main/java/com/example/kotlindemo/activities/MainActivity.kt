@@ -12,6 +12,7 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -132,7 +133,7 @@ class MainActivity : AppCompatActivity() {
 
         // MutableStateFlow demo
         GlobalScope.launch(Dispatchers.Main) {
-            val result = producerBasedOnMutableSharedFlow()
+            val result = producerBasedOnMutableStateFlow()
             delay(6000)
             result.collect {
                 Log.d(TAG, "data from flow consumer :" + it)
@@ -262,8 +263,8 @@ class MainActivity : AppCompatActivity() {
         return mutableSharedFlow
     }
 
-    private fun producerBasedOnMutableSharedFlow(): Flow<Int> {
-        Log.i(TAG, "producerBasedOnMutableSharedFlow: starts")
+    private fun producerBasedOnMutableStateFlow(): Flow<Int> {
+        Log.i(TAG, "producerBasedOnMutableStateFlow: starts")
         val mutableSharedFlow = MutableStateFlow<Int>(10)
         GlobalScope.launch {
             delay(2000)
@@ -271,7 +272,20 @@ class MainActivity : AppCompatActivity() {
             delay(2000)
             mutableSharedFlow.emit(30)
         }
-        Log.i(TAG, "producerBasedOnMutableSharedFlow: starts")
+        Log.i(TAG, "producerBasedOnMutableStateFlow: starts")
+        return mutableSharedFlow
+    }
+
+    private fun producerBasedOnMutableStateFlowValue(): StateFlow<Int> {
+        Log.i(TAG, "producerBasedOnMutableStateFlowValue: starts")
+        val mutableSharedFlow = MutableStateFlow<Int>(10)
+        GlobalScope.launch {
+            delay(2000)
+            mutableSharedFlow.emit(20)
+            delay(2000)
+            mutableSharedFlow.emit(30)
+        }
+        Log.i(TAG, "producerBasedOnMutableStateFlowValue: starts")
         return mutableSharedFlow
     }
 }
