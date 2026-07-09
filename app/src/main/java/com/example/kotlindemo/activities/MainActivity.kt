@@ -132,14 +132,19 @@ class MainActivity : AppCompatActivity() {
 */
 
         // MutableStateFlow demo
-        GlobalScope.launch(Dispatchers.Main) {
+      /*  GlobalScope.launch(Dispatchers.Main) {
             val result = producerBasedOnMutableStateFlow()
             delay(6000)
             result.collect {
                 Log.d(TAG, "data from flow consumer :" + it)
             }
-        }
+        }*/
 
+        // MutableStateFlow Value
+        GlobalScope.launch(Dispatchers.Main){
+            val result = producerBasedOnMutableStateFlowValue()
+            Log.d(TAG, "value from StateFlow :" + result.value)
+        }
 
 
 
