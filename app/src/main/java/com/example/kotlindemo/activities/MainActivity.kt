@@ -13,6 +13,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -136,11 +137,24 @@ class MainActivity : AppCompatActivity() {
             }
         }*/
 
-        GlobalScope.launch(Dispatchers.Main) {
+     /*   GlobalScope.launch(Dispatchers.Main) {
             try {
                 producerBasedOnFlowApiOnDiffContext().flowOn(Dispatchers.IO).collect {
                     Log.d(TAG, "data from flow consumer :" + it)
                     throw Exception("Error in Collector.")
+                }
+            } catch (ex: Exception) {
+                Log.d(
+                    TAG,
+                    "producerBasedOnFlowApiOnDiffContextExpDemo exp block: ${ex.message.toString()}"
+                )
+            }
+        }*/
+
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                producerBasedOnFlowApiOnDiffContextExpCatch().flowOn(Dispatchers.IO).collect {
+                    Log.d(TAG, "data from flow consumer :" + it)
                 }
             } catch (ex: Exception) {
                 Log.d(
@@ -289,6 +303,24 @@ class MainActivity : AppCompatActivity() {
             emit(it)
         }
         Log.i(TAG, "producerBasedOnFlowApiOnDiffContext: end")
+
+    }
+
+
+    private fun producerBasedOnFlowApiOnDiffContextExpCatch() : Flow<Int> {
+        Log.i(TAG, "producerBasedOnFlowApiOnDiffContextExpCatch: starts")
+        return flow<Int> {
+            val list = listOf(1, 2, 3, 4, 5)
+            list.forEach {
+                delay(1000)
+                Log.d(TAG, "producerBasedOnFlowApiOnDiffContextExpCatch: Emitter Thread - ${Thread.currentThread().name}")
+                emit(it)
+                throw Exception("Error in emitter")
+            }
+        }.catch {
+            Log.d(TAG, "producerBasedOnFlowApiOnDiffContextExpCatch: Exception in emitter thrad ${it.message}")
+        }
+        Log.i(TAG, "producerBasedOnFlowApiOnDiffContextExpCatch: end")
 
     }
 
