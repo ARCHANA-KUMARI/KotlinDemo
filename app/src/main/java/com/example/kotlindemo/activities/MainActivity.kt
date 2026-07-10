@@ -119,17 +119,26 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "data from flow consumer :" + it)
             }
         }*/
-/*
+
 
         //MutableSharedFlow demo
-        GlobalScope.launch(Dispatchers.Main) {
+
+          GlobalScope.launch(Dispatchers.Main) {
             val result = producerBasedOnSharedSharedFlow()
-            delay(5000)
-            result.collect {
-                Log.d(TAG, "data from flow consumer :" + it)
+
+             result.collect {
+                Log.d(TAG, "data from flow consumer 1 :" + it)
             }
         }
-*/
+
+        GlobalScope.launch(Dispatchers.Main) {
+            val result = producerBasedOnSharedSharedFlow()
+            delay(2500)
+            result.collect {
+                Log.d(TAG, "data from flow consumer 2 :" + it)
+            }
+        }
+
 
         // MutableStateFlow demo
       /*  GlobalScope.launch(Dispatchers.Main) {
@@ -141,10 +150,10 @@ class MainActivity : AppCompatActivity() {
         }*/
 
         // MutableStateFlow Value
-        GlobalScope.launch(Dispatchers.Main){
+      /*  GlobalScope.launch(Dispatchers.Main){
             val result = producerBasedOnMutableStateFlowValue()
             Log.d(TAG, "value from StateFlow :" + result.value)
-        }
+        }*/
 
 
 
