@@ -15,8 +15,10 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onEmpty
@@ -37,9 +39,9 @@ class MainActivity : AppCompatActivity() {
         mMainBinding.mainActivityViewmodel = mMainActivityViewModel
         mMainBinding.lifecycleOwner = this
 
-        val channel = Channel<Int>()
+      /*  val channel = Channel<Int>()
         producer(channel) // Channel is hot
-        consumer(channel)
+        consumer(channel)*/
 
 
         // Flow Demo
@@ -121,6 +123,30 @@ class MainActivity : AppCompatActivity() {
             }
         }*/
 
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                producerBasedOnFlowApiOnDiffContext().flowOn(Dispatchers.IO).map {
+                    delay(1000)
+                    it * 2
+                    Log.d(TAG, "Map thread: ${Thread.currentThread().name}")
+                }.filter {
+                    delay(500)
+                    Log.d(TAG, "Filter thread: ${Thread.currentThread().name}")
+                    it < 8
+                }.collect {
+                    Log.d(
+                        TAG,
+                        "data from flow consumer : " + it + "Collector thread: ${Thread.currentThread().name}"
+                    )
+                }
+            } catch (ex: Exception) {
+                Log.d(
+                    TAG,
+                    "producerBasedOnFlowApiOnDiffContextExpDemo exp block: ${ex.message.toString()}"
+                )
+            }
+        }
+
 
 
         //Throw Exception in Emitter
@@ -164,7 +190,7 @@ class MainActivity : AppCompatActivity() {
             }
         }*/
 
-        GlobalScope.launch(Dispatchers.Main) {
+      /*  GlobalScope.launch(Dispatchers.Main) {
             try {
                 producerBasedOnFlowApiOnDiffContextExpCatchAndEmitValueInCatch().flowOn(Dispatchers.IO).collect {
                     Log.d(
@@ -179,7 +205,7 @@ class MainActivity : AppCompatActivity() {
                 )
             }
         }
-
+*/
 
 
         //MutableSharedFlow demo
@@ -385,6 +411,7 @@ class MainActivity : AppCompatActivity() {
         list.forEach {
             delay(1000)
             emit(it)
+            Log.d(TAG, "producerBasedOnFlowApiOnDiffContext: emitter thread name:{${Thread.currentThread().name}}")
         }
         Log.i(TAG, "producerBasedOnFlowApiOnDiffContext: end")
 
