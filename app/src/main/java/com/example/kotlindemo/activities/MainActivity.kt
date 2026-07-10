@@ -123,10 +123,24 @@ class MainActivity : AppCompatActivity() {
 
 
         //Throw Exception in Emitter
-        GlobalScope.launch(Dispatchers.Main) {
+        /*GlobalScope.launch(Dispatchers.Main) {
             try {
                 producerBasedOnFlowApiOnDiffContextExpDemo().flowOn(Dispatchers.IO).collect {
                     Log.d(TAG, "data from flow consumer :" + it)
+                }
+            } catch (ex: Exception) {
+                Log.d(
+                    TAG,
+                    "producerBasedOnFlowApiOnDiffContextExpDemo exp block: ${ex.message.toString()}"
+                )
+            }
+        }*/
+
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                producerBasedOnFlowApiOnDiffContext().flowOn(Dispatchers.IO).collect {
+                    Log.d(TAG, "data from flow consumer :" + it)
+                    throw Exception("Error in Collector.")
                 }
             } catch (ex: Exception) {
                 Log.d(
