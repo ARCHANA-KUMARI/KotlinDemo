@@ -121,9 +121,24 @@ class MainActivity : AppCompatActivity() {
         }*/
 
 
+
+        //Throw Exception in Emitter
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                producerBasedOnFlowApiOnDiffContextExpDemo().flowOn(Dispatchers.IO).collect {
+                    Log.d(TAG, "data from flow consumer :" + it)
+                }
+            } catch (ex: Exception) {
+                Log.d(
+                    TAG,
+                    "producerBasedOnFlowApiOnDiffContextExpDemo exp block: ${ex.message.toString()}"
+                )
+            }
+        }
+
         //MutableSharedFlow demo
 
-          GlobalScope.launch(Dispatchers.Main) {
+       /*   GlobalScope.launch(Dispatchers.Main) {
             val result = producerBasedOnSharedSharedFlow()
 
              result.collect {
@@ -137,7 +152,8 @@ class MainActivity : AppCompatActivity() {
             result.collect {
                 Log.d(TAG, "data from flow consumer 2 :" + it)
             }
-        }
+        }*/
+
 
 
         // MutableStateFlow demo
@@ -251,6 +267,28 @@ class MainActivity : AppCompatActivity() {
         Log.i(TAG, "producerBasedOnFlowApi: end")
     }
 
+    private fun producerBasedOnFlowApiOnDiffContextExpInCollect() = flow<Int> {
+        Log.i(TAG, "producerBasedOnFlowApiOnDiffContext: starts")
+        val list = listOf(1, 2, 3, 4, 5)
+        list.forEach {
+            delay(1000)
+            emit(it)
+        }
+        Log.i(TAG, "producerBasedOnFlowApiOnDiffContext: end")
+
+    }
+
+    private fun producerBasedOnFlowApiOnDiffContextExpDemo() = flow<Int> {
+        Log.i(TAG, "producerBasedOnFlowApiOnDiffContext: starts")
+        val list = listOf(1, 2, 3, 4, 5)
+        list.forEach {
+            delay(1000)
+            emit(it)
+            throw Exception("Error in emitter")
+        }
+        Log.i(TAG, "producerBasedOnFlowApiOnDiffContext: end")
+
+    }
     private fun producerBasedOnFlowApiOnDiffContext() = flow<Int> {
         Log.i(TAG, "producerBasedOnFlowApiOnDiffContext: starts")
         val list = listOf(1, 2, 3, 4, 5)
@@ -261,6 +299,7 @@ class MainActivity : AppCompatActivity() {
         Log.i(TAG, "producerBasedOnFlowApiOnDiffContext: end")
 
     }
+
 
     private fun producerBasedOnSharedSharedFlow(): Flow<Int> {
         Log.i(TAG, "producerBasedOnSharedSharedFlow: starts")
