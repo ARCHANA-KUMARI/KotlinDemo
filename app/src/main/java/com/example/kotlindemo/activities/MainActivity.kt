@@ -151,7 +151,7 @@ class MainActivity : AppCompatActivity() {
             }
         }*/
 
-        GlobalScope.launch(Dispatchers.Main) {
+       /* GlobalScope.launch(Dispatchers.Main) {
             try {
                 producerBasedOnFlowApiOnDiffContextExpCatch().flowOn(Dispatchers.IO).collect {
                     Log.d(TAG, "data from flow consumer :" + it)
@@ -162,7 +162,25 @@ class MainActivity : AppCompatActivity() {
                     "producerBasedOnFlowApiOnDiffContextExpDemo exp block: ${ex.message.toString()}"
                 )
             }
+        }*/
+
+        GlobalScope.launch(Dispatchers.Main) {
+            try {
+                producerBasedOnFlowApiOnDiffContextExpCatchAndEmitValueInCatch().flowOn(Dispatchers.IO).collect {
+                    Log.d(
+                        TAG,
+                        "data from flow consumer : " + it + "Collector thread: ${Thread.currentThread().name}"
+                    )
+                }
+            } catch (ex: Exception) {
+                Log.d(
+                    TAG,
+                    "producerBasedOnFlowApiOnDiffContextExpDemo exp block: ${ex.message.toString()}"
+                )
+            }
         }
+
+
 
         //MutableSharedFlow demo
 
@@ -306,6 +324,32 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /**
+     * Flow exception: Exception while collecting items from flow and catch it using Flow catch api and emit -1 in catch block. So afte exception also it will emit the value -1.
+     */
+    private fun producerBasedOnFlowApiOnDiffContextExpCatchAndEmitValueInCatch(): Flow<Int> {
+        Log.i(TAG, "producerBasedOnFlowApiOnDiffContextExpCatchAndEmitValueInCatch: starts")
+        return flow<Int> {
+            val list = listOf(1, 2, 3, 4, 5)
+            list.forEach {
+                delay(1000)
+                Log.d(
+                    TAG,
+                    "producerBasedOnFlowApiOnDiffContextExpCatchAndEmitValueInCatch: Emitter Thread - ${Thread.currentThread().name}"
+                )
+                emit(it)
+                throw Exception("Error in emitter")
+            }
+        }.catch {
+            Log.d(
+                TAG,
+                "producerBasedOnFlowApiOnDiffContextExpCatchAndEmitValueInCatch: Exception in emitter thrad ${it.message}"
+            )
+            emit(-1)
+        }
+        Log.i(TAG, "producerBasedOnFlowApiOnDiffContextExpCatchAndEmitValueInCatch: end")
+
+    }
 
     private fun producerBasedOnFlowApiOnDiffContextExpCatch() : Flow<Int> {
         Log.i(TAG, "producerBasedOnFlowApiOnDiffContextExpCatch: starts")
