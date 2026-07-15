@@ -1,0 +1,16 @@
+package com.example.kotlindemo.concept.kotlinscopefunction
+
+fun main() {
+    var letVariable = Person("ABC", 20).let { }
+    println("letVariable = ${letVariable}") // op letVariable = kotlin.Unit
+    var runVariable = Person("ABC", 20).run { }
+    println("runVariable = ${runVariable}") //op runVariable = kotlin.Unit
+    var withVariable = with(Person("ABC", 20)) {}
+    println("withVariable = ${withVariable}")  //withVariable = kotlin.Unit
+    var applyVariable = Person("ABC", 20).let { }
+    println("applyVariable = ${applyVariable}") //applyVariable = kotlin.Unit
+    var alsoVariable = Person("ABC", 20).let { }
+    println("alsoVariable = ${alsoVariable}") //alsoVariable = kotlin.Unit
+
+}
+
