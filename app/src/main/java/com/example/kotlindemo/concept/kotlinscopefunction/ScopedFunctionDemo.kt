@@ -7,10 +7,10 @@ fun main() {
     println("runVariable = ${runVariable}") //op runVariable = kotlin.Unit
     var withVariable = with(Person("ABC", 20)) {}
     println("withVariable = ${withVariable}")  //withVariable = kotlin.Unit
-    var applyVariable = Person("ABC", 20).let { }
-    println("applyVariable = ${applyVariable}") //applyVariable = kotlin.Unit
-    var alsoVariable = Person("ABC", 20).let { }
-    println("alsoVariable = ${alsoVariable}") //alsoVariable = kotlin.Unit
+    var applyVariable = Person("ABC", 20).apply { }
+    println("applyVariable = ${applyVariable}") //applyVariable = Person(name=ABC, age=20)
+    var alsoVariable = Person("ABC", 20).also { }
+    println("alsoVariable = ${alsoVariable}") //alsoVariable = Person(name=ABC, age=20)
 
 }
 
