@@ -21,11 +21,11 @@ fun main(args : Array<String>){
     println("DataDemo object" + dataDemo)
     println("DataDemo toString" + dataDemo.toString())
     println("DataDemo hashCode" + dataDemo.hashCode())
-    var dataDemoCopyOf = dataDemo.copy()
-    //var dataDemoCopyOf = dataDemo.copy("xyzTest", 6)
+    var dataDemoCopyOf = dataDemo.copy("",8)
+    var dataDemoCopyOf1 = dataDemo.copy("xyzTest", 6)
 
 
-    println("DataDemo componentN" + dataDemoCopyOf)
+    println("dataDemoCopyOf1" + dataDemoCopyOf)
 
     // Demo for properties which is not defined in primary constructor
     var dataDemoMis1 = DataDemoMis("DevK")
