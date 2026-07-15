@@ -13,7 +13,7 @@ fun main() {
     var alsoVariable = Person("ABC", 20).also { }
    // println("alsoVariable = ${alsoVariable}") //alsoVariable = Person(name=ABC, age=20)*/
 
-    var letVariable = Person("ABC", 20).let {
+ /*   var letVariable = Person("ABC", 20).let {
         it.name + it.age
     }
     println("letVariable = ${letVariable}") // op letVariable = kotlin.Unit
@@ -30,8 +30,29 @@ fun main() {
     var alsoVariable = Person("ABC", 20).also {
         it.name + it.age
     }
-    println("alsoVariable = ${alsoVariable}") //alsoVariable = Person(name=ABC, age=20)
+    println("alsoVariable = ${alsoVariable}") //alsoVariable = Person(name=ABC, age=20)*/
 
+   //..........................................................................................................
+    var letVariable = Person("ABC", 20).let {
+        it
+    }
+    println("letVariable = ${letVariable}") // op letVariable = Person(name=ABC, age=20)
+    var runVariable = Person("ABC", 20).run {
+        this
+    }
+    println("runVariable = ${runVariable}") //op runVariable = Person(name=ABC, age=20)
+    var withVariable = with(Person("ABC", 20)) {
+        this
+    }
+    println("withVariable = ${withVariable}")  //withVariable = Person(name=ABC, age=20)
+    var applyVariable = Person("ABC", 20).apply {
+        this
+    }
+    println("applyVariable = ${applyVariable}") //withVariable = Person(name=ABC, age=20)
+    var alsoVariable = Person("ABC", 20).also {
+        it
+    }
+    println("alsoVariable = ${alsoVariable}") // alsoVariable = Person(name=ABC, age=20)
 
 }
 
