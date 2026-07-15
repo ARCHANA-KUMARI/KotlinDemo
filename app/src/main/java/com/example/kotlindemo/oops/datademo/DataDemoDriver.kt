@@ -28,9 +28,24 @@ fun main(args : Array<String>){
     println("DataDemo componentN" + dataDemoCopyOf)
 
     // Demo for properties which is not defined in primary constructor
-    var dataDemoMis = DataDemoMis("DevK")
-    println("DataDemoMis object" + dataDemoMis)
-    println("DataDemoMis toString" + dataDemoMis.toString())
-    println("DataDemoMis hashCode" + dataDemoMis.hashCode())
+    var dataDemoMis1 = DataDemoMis("DevK")
+    println("DataDemoMis object" + dataDemoMis1)
+    println("DataDemoMis toString" + dataDemoMis1.toString())
+    println("DataDemoMis hashCode" + dataDemoMis1.hashCode())
+
+    var dataDemoMis12 = DataDemoMis("DevK")
+    dataDemoMis12.age=10
+    println("dataDemoMis12 object" + dataDemoMis12)
+    println("dataDemoMis12 toString" + dataDemoMis12.toString())
+    println("dataDemoMis12 hashCode" + dataDemoMis12.hashCode())
+
+    var dataDemoMis13 = DataDemoMis("DevK")
+    dataDemoMis12.age=15
+    println("dataDemoMis13 object" + dataDemoMis13)
+    println("dataDemoMis13 toString" + dataDemoMis13.toString())
+    println("dataDemoMis13 hashCode" + dataDemoMis13.hashCode())
+
+    println("dataDemoMis13 object equals Method check" + dataDemoMis12.equals(dataDemoMis13))
+    println("dataDemoMis13 object == operator check" + (dataDemoMis12 == dataDemoMis13))
 
 }
