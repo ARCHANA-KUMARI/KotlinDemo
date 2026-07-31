@@ -209,9 +209,9 @@ class MainActivity : AppCompatActivity() {
 
         //MutableSharedFlow demo
 
-       /*   GlobalScope.launch(Dispatchers.Main) {
+          GlobalScope.launch(Dispatchers.Main) {
             val result = producerBasedOnSharedSharedFlow()
-
+              Log.d(TAG, "onCreate: MutableSharedFlow ref 1: $result")
              result.collect {
                 Log.d(TAG, "data from flow consumer 1 :" + it)
             }
@@ -219,11 +219,12 @@ class MainActivity : AppCompatActivity() {
 
         GlobalScope.launch(Dispatchers.Main) {
             val result = producerBasedOnSharedSharedFlow()
+            Log.d(TAG, "onCreate: MutableSharedFlow ref 2: $result")
             delay(2500)
             result.collect {
                 Log.d(TAG, "data from flow consumer 2 :" + it)
             }
-        }*/
+        }
 
 
 
