@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         // Flow Demo
 
      /*   GlobalScope.launch {
-            val data: Flow<Int> = producerBasedOnFlowApi() // Flow is hot if we comment collect then it will be not executed.
+            val data: Flow<Int> = producerBasedOnFlowApi() // Flow is cold if we comment collect then it will be not executed.
          *//*   data.collect {
                 Log.d(TAG, "data from flow:" + it)
             }*//*
@@ -123,7 +123,7 @@ class MainActivity : AppCompatActivity() {
             }
         }*/
 
-        GlobalScope.launch(Dispatchers.Main) {
+      /*  GlobalScope.launch(Dispatchers.Main) {
             try {
                 producerBasedOnFlowApiOnDiffContext().flowOn(Dispatchers.IO).map {
                     delay(1000)
@@ -145,7 +145,7 @@ class MainActivity : AppCompatActivity() {
                     "producerBasedOnFlowApiOnDiffContextExpDemo exp block: ${ex.message.toString()}"
                 )
             }
-        }
+        }*/
 
 
 
@@ -278,7 +278,7 @@ class MainActivity : AppCompatActivity() {
             task2()
         }*/
 
-        testCoroutineContext();
+      //  testCoroutineContext();
     }
 
     suspend fun doSomethingUsefulOne(): Int {
@@ -332,7 +332,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun producerBasedOnFlowApi() = flow <Int>{
         Log.i(TAG, "producerBasedOnFlowApi: starts")
-        val list = listOf(1,2,3,4,5,6,7,8,9,10)
+       // val list = listOf(1,2,3,4,5,6,7,8,9,10)
         //val list = emptyList<Int>() // Demo for onEmpty callback
         list.forEach { delay(1000)
         emit(it)}
