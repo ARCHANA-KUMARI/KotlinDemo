@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
         // Demo to cancel job then Flow will be also cancelled.
 
-       /* val job = GlobalScope.launch {
+        val job = GlobalScope.launch {
             val data: Flow<Int> = producerBasedOnFlowApi() // Flow is hot if we comment collect then it will be not executed.
                data.collect {
                    Log.d(TAG, "data from flow:" + it)
@@ -65,33 +65,32 @@ class MainActivity : AppCompatActivity() {
         GlobalScope.launch { delay(5000)
             job.cancel()
         }
-*/
         // Multiple consumer
      /*   GlobalScope.launch {
-            val data: Flow<Int> = producerBasedOnFlowApi() // Flow is hot if we comment collect then it will be not executed.
+            val data: Flow<Int> = producerBasedOnFlowApi() // Flow is cold if we comment collect then it will be not executed.
             data.collect {
                 Log.d(TAG, "data from flow consumer-1 :" + it)
             }
         }
 
         GlobalScope.launch {
-            val data: Flow<Int> = producerBasedOnFlowApi() // Flow is hot if we comment collect then it will be not executed.
+            val data: Flow<Int> = producerBasedOnFlowApi() // Flow is cold if we comment collect then it will be not executed.
             data.collect {
                 Log.d(TAG, "data from flow consumer-2 :" + it)
             }
         }*/
 
         // Multiple Consumer when one consumer join delayed of 5 seconds then also it will get data from
-        // starting becuase it is code . Take example of netflix or prime video
+        // starting becuase it is cold . Take example of netflix or prime video
      /*   GlobalScope.launch {
-            val data: Flow<Int> = producerBasedOnFlowApi() // Flow is hot if we comment collect then it will be not executed.
+            val data: Flow<Int> = producerBasedOnFlowApi() // Flow is cold if we comment collect then it will be not executed.
             data.collect {
                 Log.d(TAG, "data from flow consumer-1 :" + it)
             }
         }
 
         GlobalScope.launch {
-            val data: Flow<Int> = producerBasedOnFlowApi() // Flow is hot if we comment collect then it will be not executed.
+            val data: Flow<Int> = producerBasedOnFlowApi() // Flow is cold if we comment collect then it will be not executed.
             delay(5000)
             data.collect {
                 Log.d(TAG, "data from flow consumer-2 :" + it)
@@ -332,7 +331,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun producerBasedOnFlowApi() = flow <Int>{
         Log.i(TAG, "producerBasedOnFlowApi: starts")
-       // val list = listOf(1,2,3,4,5,6,7,8,9,10)
+        val list = listOf(1,2,3,4,5,6,7,8,9,10)
         //val list = emptyList<Int>() // Demo for onEmpty callback
         list.forEach { delay(1000)
         emit(it)}
