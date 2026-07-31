@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
         // Demo to cancel job then Flow will be also cancelled.
 
-        val job = GlobalScope.launch {
+    /*    val job = GlobalScope.launch {
             val data: Flow<Int> = producerBasedOnFlowApi() // Flow is hot if we comment collect then it will be not executed.
                data.collect {
                    Log.d(TAG, "data from flow:" + it)
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
         GlobalScope.launch { delay(5000)
             job.cancel()
-        }
+        }*/
         // Multiple consumer
      /*   GlobalScope.launch {
             val data: Flow<Int> = producerBasedOnFlowApi() // Flow is cold if we comment collect then it will be not executed.
