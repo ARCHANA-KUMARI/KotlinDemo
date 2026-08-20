@@ -5,5 +5,6 @@ package com.example.kotlindemo.oops.EnumDemo;
  * @Date: 21-09-2022
  */
 public enum EnumDemo {
-    NORTH, SOUTH, WEST, EAST
+    NORTH, SOUTH, WEST, EAST;
+    /* class enum EnumDemoInnerClass {}*/
 }
