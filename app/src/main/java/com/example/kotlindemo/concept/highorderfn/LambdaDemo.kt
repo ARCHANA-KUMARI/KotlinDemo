@@ -21,7 +21,7 @@ fun main() {
         2
     }
     println("multilineLambdaReturn = ${multilineLambdaReturn()}")
-
-    val singleParamsLambda: (Int) -> Int = { x -> x * 2 }
+    val singleParamsLambda: (Int) -> Int = { x : Int -> x * 2 }
+    //val singleParamsLambda: (Int) -> Int = { x -> x * 2 } // No need to specify the type of x, it can be inferred from the context
     println("singleParamsLambda = ${singleParamsLambda(5)}")
 }
