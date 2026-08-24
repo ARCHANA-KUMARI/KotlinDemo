@@ -21,4 +21,7 @@ fun main() {
         2
     }
     println("multilineLambdaReturn = ${multilineLambdaReturn()}")
+
+    val singleParamsLambda: (Int) -> Int = { x -> x * 2 }
+    println("singleParamsLambda = ${singleParamsLambda(5)}")
 }
