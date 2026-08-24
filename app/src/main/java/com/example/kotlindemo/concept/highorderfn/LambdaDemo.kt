@@ -13,4 +13,12 @@ fun main() {
         println("It can have multiple statements")
     }
     multilineLambda()
+    
+    val multilineLambdaReturn:()->Int = {
+       println("This is a multiline lambda with a return value")
+        val a: Int = 2+3
+        "Hello to multilineLambda"
+        2
+    }
+    println("multilineLambdaReturn = ${multilineLambdaReturn()}")
 }
