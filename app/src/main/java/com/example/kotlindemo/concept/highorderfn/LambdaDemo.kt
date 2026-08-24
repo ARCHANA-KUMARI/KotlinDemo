@@ -24,6 +24,8 @@ fun main() {
     val singleParamsLambda: (Int) -> Int = { x : Int -> x * 2 }
     //val singleParamsLambda: (Int) -> Int = { x -> x * 2 } // No need to specify the type of x, it can be inferred from the context
     println("singleParamsLambda = ${singleParamsLambda(5)}")
+    val singleParamsLambdaSimple: (Int) -> Int = { it * 2 } // No need to specify the type of x, it can be inferred from the context and use 'it' keyword
+    println("singleParamsLambdaSimple = ${singleParamsLambdaSimple(5)}")
 
     val sayHi :(String) -> Unit = { name: String -> println("Hi $name") }
     sayHi("Archana")
