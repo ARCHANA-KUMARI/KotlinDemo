@@ -14,4 +14,8 @@ fun main() {
         return a % 2 == 0
     }) // passing lambda expression as an argument to the filter function
     println(evenNumbers) // Output: [2, 4, 6, 8, 10]
+
+    // passing lambda expression as an argument to the filter function
+    val evenNumbers2 = numbers.filter { a: Int -> a % 2 == 0 }
+    println(evenNumbers2) // Output: [2, 4,
 }
