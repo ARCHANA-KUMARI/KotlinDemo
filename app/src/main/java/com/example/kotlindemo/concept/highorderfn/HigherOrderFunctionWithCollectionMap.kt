@@ -15,4 +15,6 @@ fun main() {
     val nums: List<Int> = listOf(1, 2, 3, 4, 5)
     val squaredNums = nums.map { it * it }
     println(squaredNums)
+
+    nums.forEach { println(it) }
 }
