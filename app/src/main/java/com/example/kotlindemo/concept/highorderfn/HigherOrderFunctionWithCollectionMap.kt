@@ -11,4 +11,8 @@ fun main() {
 
     val paidUsers = users.map { user -> PaidUser(user.id, user.name, "Paid") }
     println(paidUsers)
+
+    val nums: List<Int> = listOf(1, 2, 3, 4, 5)
+    val squaredNums = nums.map { it * it }
+    println(squaredNums)
 }
