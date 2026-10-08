@@ -10,4 +10,6 @@ fun main() {
     for (shape in readOnlyShapes) {
         println(shape)
     }
+
+    readOnlyShapes.first()
 }
