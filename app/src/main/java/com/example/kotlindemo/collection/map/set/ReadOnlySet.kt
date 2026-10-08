@@ -1,4 +1,4 @@
-package com.example.kotlindemo.collection.map.list.set
+package com.example.kotlindemo.collection.map.set
 
 fun main() {
     val immutableSet = setOf(6, 9, 9, 0, 0)
